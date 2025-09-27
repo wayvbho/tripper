@@ -1,5 +1,5 @@
 require('dotenv').config()
-
+const tripRoutes = require('./routes/trips')
 const express = require('express')
 
 const PORT = process.env.PORT
@@ -11,6 +11,7 @@ const app = express()
 app.use(express.json())
 
 // listen for requests
+app.use('/api/trips', tripRoutes)
 
 app.listen(PORT, () => {
     console.log("Listening on port", PORT)
