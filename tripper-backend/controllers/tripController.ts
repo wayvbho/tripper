@@ -1,25 +1,26 @@
+import { Request, Response } from 'express'
+
 // GET all trips
-const getTrips = async (req, res) => {
+export const getTrips = async (req: Request, res: Response): Promise<void> => {
     try {
-        // placeholder response for now
         res.status(200).json({ message: "Get all trips" })
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ error: error.message })
     }
 }
 
 // GET a single trip
-const getTrip = async (req, res) => {
+export const getTrip = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params
     try {
         res.status(200).json({ message: `Get trip with id: ${id}` })
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ error: error.message })
     }
 }
 
 // CREATE a new trip
-const createTrip = async (req, res) => {
+export const createTrip = async (req: Request, res: Response): Promise<void> => {
     const { destination, startDate, endDate, notes } = req.body
 
     try {
@@ -27,23 +28,23 @@ const createTrip = async (req, res) => {
             message: "New trip created",
             trip: { destination, startDate, endDate, notes }
         })
-    } catch (error) {
+    } catch (error: any) {
         res.status(400).json({ error: error.message })
     }
 }
 
 // DELETE a trip
-const deleteTrip = async (req, res) => {
+export const deleteTrip = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params
     try {
         res.status(200).json({ message: `Deleted trip with id: ${id}` })
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ error: error.message })
     }
 }
 
 // UPDATE a trip
-const updateTrip = async (req, res) => {
+export const updateTrip = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params
     const updates = req.body
     try {
@@ -51,15 +52,7 @@ const updateTrip = async (req, res) => {
             message: `Updated trip with id: ${id}`,
             updates
         })
-    } catch (error) {
+    } catch (error: any) {
         res.status(400).json({ error: error.message })
     }
-}
-
-module.exports = {
-    getTrips,
-    getTrip,
-    createTrip,
-    deleteTrip,
-    updateTrip
 }

@@ -1,6 +1,6 @@
-require('dotenv').config()
-const tripRoutes = require('./routes/trips')
-const express = require('express')
+import 'dotenv/config'
+import express from 'express'
+import tripRoutes from './routes/trips'
 
 const PORT = process.env.PORT
 
@@ -13,14 +13,10 @@ app.use(express.json())
 // listen for requests
 app.use('/api/trips', tripRoutes)
 
-app.listen(PORT, () => {
-    console.log("Listening on port", PORT)
-})
-
-
-// routes
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.send('Welcome to the Tripper backend!')
 })
 
-
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`)
+})
